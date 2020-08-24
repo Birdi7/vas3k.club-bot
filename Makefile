@@ -6,7 +6,7 @@
 base_python := python3
 py := poetry run
 python := $(py) python
-project_source_dir := src #todo: change it!
+project_source_dir := app
 
 reports_dir := reports
 
