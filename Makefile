@@ -89,16 +89,8 @@ flake8-report:
 	mkdir -p $(reports_dir)/flake8
 	$(py) flake8 --format=html --htmldir=$(reports_dir)/flake8 $(project_source_dir)
 
-.PHONY: mypy
-mypy:
-	$(py) mypy $(project_source_dir)
-
-.PHONY: mypy-report
-mypy-report:
-	$(py) mypy $(project_source_dir) --html-report $(reports_dir)/typechecking
-
 .PHONY: lint
-lint: isort black flake8 mypy
+lint: isort black flake8
 
 # =================================================================================================
 # Tests
@@ -144,7 +136,7 @@ docs-copy-reports:
 # =================================================================================================
 
 .PHONY: build
-build: clean flake8-report mypy-report test-coverage docs docs-copy-reports
+build: clean flake8-report test-coverage docs docs-copy-reports
 	mkdir -p site/simple
 	poetry build
 	mv dist site/simple/$(project_source_dir)
