@@ -24,4 +24,4 @@ def setup():
 
     middlewares.setup(dp)
 
-    import app.handlers # noqa
+    import app.handlers  # noqa

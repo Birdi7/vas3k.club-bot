@@ -1,5 +1,8 @@
+from typing import Union
+
+from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import CommandStart
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 from app.misc import dp
 
@@ -10,3 +13,13 @@ from app.misc import dp
 @dp.message_handler(CommandStart())
 async def start_command_handler(message: Message):
     await message.answer("Я пока с тобой не знаком, но это альфа, так что разрешаю пользоваться")
+
+
+# cancel any user state
+@dp.message_handler(commands="cancel", state="*")
+@dp.callback_query_handler(text="cancel", state="*")
+async def cancel_command_handler(message: Union[CallbackQuery, Message], state: FSMContext):
+    real_message = message if isinstance(message, Message) else message.message
+    
+    await real_message.answer("Отменяю..")
+    await state.finish()
