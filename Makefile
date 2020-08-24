@@ -74,7 +74,7 @@ clean:
 
 .PHONY: isort
 isort:
-	$(py) isort -rc $(project_source_dir)
+	$(py) isort $(project_source_dir)
 
 .PHONY: black
 black:
@@ -146,3 +146,7 @@ build: clean flake8-report test-coverage docs docs-copy-reports
 bump:
 	poetry version $(args)
 	$(python) scripts/bump_versions.py
+
+.PHONY: polling
+polling:
+	$(python) -m $(project_source_dir) 
