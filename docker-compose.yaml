@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  bot:
+    build: .
+    image: "vas3k.club-bot"
+    depends_on:
+      - db
+      
+  db: #todo: persistent volume
+    image: postgres
+    environment:
+      - POSTGRES_DB="${DB_NAME}"
+      - POSTGRES_USER="${DB_USER}"
+      - POSTGRES_PASSWORD="${DB_PASSWORD}"
