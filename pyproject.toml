@@ -16,6 +16,7 @@ psycopg2-binary = "^2.8.5"
 isort = "^5.4.2"
 black = "^19.10b0"
 flake8 = "^3.8.3"
+pre-commit = "^2.7.1"
 
 [tool.black]
 line-length = 119
