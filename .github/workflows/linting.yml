@@ -29,8 +29,12 @@ jobs:
         python -m pip install --upgrade pip poetry==1.0
         poetry install
     
-    - name: Lint code
+    - name: Lint with isort
       run: |
         poetry run isort -rc app
+    - name: Lint with black
+      run: |
         poetry run black --check app
+    - name: Lint with flake8
+      run: |
         poetry run flake8 app
