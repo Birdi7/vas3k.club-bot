@@ -6,7 +6,7 @@ services:
     image: "vas3k.club-bot"
     depends_on:
       - db
-      
+
   db: #todo: persistent volume
     image: postgres
     environment:

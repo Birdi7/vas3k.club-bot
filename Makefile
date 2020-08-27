@@ -149,4 +149,4 @@ bump:
 
 .PHONY: polling
 polling:
-	$(python) -m $(project_source_dir) 
+	$(python) -m $(project_source_dir)

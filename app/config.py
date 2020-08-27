@@ -1,6 +1,7 @@
+import logging
+
 from envparse import env
 from sqlalchemy import create_engine
-import logging
 
 # firstly, try to read .env flie
 env.read_envfile()
@@ -29,10 +30,10 @@ ENGINE = create_engine(
     "postgres+psycopg2://{user}:{password}@{host}:{port}/{dbname}".format(
         user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT, dbname=DB_NAME
     ),
-    client_encoding='utf-8'
+    client_encoding="utf-8",
 )
 
 
 # Logging
-logging.basicConfig()#todo
-logging.getLogger('sqlalchemy.dialects.postgresql').setLevel(logging.INFO)
+logging.basicConfig()  # todo
+logging.getLogger("sqlalchemy.dialects.postgresql").setLevel(logging.INFO)
