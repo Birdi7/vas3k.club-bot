@@ -9,5 +9,5 @@ RUN poetry install --no-dev
 COPY . /app/
 COPY .env /app/
 
-# FIXME:
+# FIXME: webhook here
 CMD ["make", "polling"]
