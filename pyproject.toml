@@ -2,14 +2,13 @@
 name = "vas3k.club-bot"
 version = "0.1.0"
 description = "A telegram bot for vas3k.club"
-authors = ["Your Name <you@example.com>"]
+authors = ["Egor <egor.osokin7@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 aiogram = "^2.9.2"
 envparse = "^0.2.0"
-sqlalchemy = "^1.3.19"
 psycopg2-binary = "^2.8.5"
 
 [tool.poetry.dev-dependencies]

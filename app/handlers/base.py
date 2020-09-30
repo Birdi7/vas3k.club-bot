@@ -21,5 +21,5 @@ async def start_command_handler(message: Message):
 async def cancel_command_handler(message: Union[CallbackQuery, Message], state: FSMContext):
     real_message = message if isinstance(message, Message) else message.message
 
-    await real_message.answer("Отменяю..")
+    await real_message.answer("Отменяю...")
     await state.finish()

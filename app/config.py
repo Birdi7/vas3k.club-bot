@@ -1,7 +1,6 @@
 import logging
 
 from envparse import env
-from sqlalchemy import create_engine
 
 # firstly, try to read .env flie
 env.read_envfile()
@@ -19,21 +18,7 @@ WEBHOOK_URL = f"https://{DOMAIN}{WEBHOOK_PATH}"
 RUN_POLLING = True
 
 
-# Database connection
-DB_USER = env.str("DB_USER", "postgres")
-DB_PASSWORD = env.str("DB_PASSWORD", "postgres")
-DB_HOST = env.str("DB_HOST", "db")
-DB_PORT = env.str("DB_PORT", 5432)
-DB_NAME = env.str("DB_NAME", "vas3k.club-bot")
-
-ENGINE = create_engine(
-    "postgres+psycopg2://{user}:{password}@{host}:{port}/{dbname}".format(
-        user=DB_USER, password=DB_PASSWORD, host=DB_HOST, port=DB_PORT, dbname=DB_NAME
-    ),
-    client_encoding="utf-8",
-)
-
+CLUB_HOST = "localhost"
 
 # Logging
-logging.basicConfig()  # todo
-logging.getLogger("sqlalchemy.dialects.postgresql").setLevel(logging.INFO)
+logging.basicConfig(format="%(levelname)s %(asctime)s %(module)s %(message)s")

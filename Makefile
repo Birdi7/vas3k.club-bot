@@ -142,11 +142,6 @@ build: clean flake8-report test-coverage docs docs-copy-reports
 	mv dist site/simple/$(project_source_dir)
 
 
-.PHONY: bump
-bump:
-	poetry version $(args)
-	$(python) scripts/bump_versions.py
-
 .PHONY: polling
 polling:
 	$(python) -m $(project_source_dir)
