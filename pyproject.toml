@@ -13,9 +13,9 @@ psycopg2-binary = "^2.8.5"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.4.2"
-black = "^19.10b0"
 flake8 = "^3.8.3"
 pre-commit = "^2.7.1"
+black = "^20.8b1"
 
 [tool.black]
 line-length = 119
