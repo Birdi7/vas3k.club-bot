@@ -5,14 +5,14 @@ from aiogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMar
 from aiogram.utils import markdown
 
 from app.misc import dp
+from app.personal.create_post.states import CreateNewPostStates
 from app.utils.callback_data import create_post_callback
 from app.utils.keyboards import inline_cancel_button
-from app.utils.states import CreateNewPostStates
 
 logger = logging.getLogger("bot")
 
 
-@dp.message_handler()
+@dp.message_handler(commands="create_post")
 async def create_post_handler(message: Message, state: FSMContext):
     if len(message.text) <= 120:
         await message.answer("Маловато...")

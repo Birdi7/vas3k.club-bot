@@ -20,8 +20,12 @@ dp = Dispatcher(bot, storage=storage)
 
 def setup():
     logger.info("Configure handlers...")
-    from app import middlewares
+    from app.utils import filters, middlewares
 
     middlewares.setup(dp)
+    filters.setup(dp)
 
-    import app.handlers  # noqa
+    import app.handlers
+    import app.personal.handlers  # noqa
+
+    logger.info("Configuration finished")
