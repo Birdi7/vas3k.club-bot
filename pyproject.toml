@@ -10,6 +10,7 @@ python = "^3.8"
 aiogram = "^2.9.2"
 envparse = "^0.2.0"
 psycopg2-binary = "^2.8.5"
+uvloop = {version = "^0.14.0", optional = true}
 
 [tool.poetry.dev-dependencies]
 isort = "^5.4.2"

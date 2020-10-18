@@ -115,33 +115,13 @@ test-coverage-view:
 	$(py) coverage html -d $(reports_dir)/coverage
 	python -c "import webbrowser; webbrowser.open('file://$(shell pwd)/reports/coverage/index.html')"
 
-# =================================================================================================
-# Docs
-# =================================================================================================
-
-.PHONY: docs
-docs:
-	$(py) mkdocs build
-
-.PHONY: docs-serve
-docs-serve:
-	$(py) mkdocs serve
-
-.PHONY: docs-copy-reports
-docs-copy-reports:
-	mv $(reports_dir)/* site/reports
 
 # =================================================================================================
 # Project
 # =================================================================================================
 
-.PHONY: build
-build: clean flake8-report test-coverage docs docs-copy-reports
-	mkdir -p site/simple
-	poetry build
-	mv dist site/simple/$(project_source_dir)
-
 
 .PHONY: polling
 polling:
+	$(base_python) ./utils/wait_for_club.py
 	$(python) -m $(project_source_dir)

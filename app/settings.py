@@ -18,11 +18,14 @@ BOT_PUBLIC_PORT = env.int("BOT_PUBLIC_PORT", default=8080)
 # RUN_POLLING = True
 
 
-CLUB_HOST = "localhost"
+CLUB_HOST = "app"
 CLUB_PORT = 8000
 CLUB_API_PATH = "bot_api"
 
 # Logging
-logging.basicConfig(format="%(levelname)s %(asctime)s %(module)s %(message)s", level=logging.DEBUG)
+logging.basicConfig(format="%(levelname)s %(asctime)s %(module)s %(message)s", level=logging.INFO)
 
-logging.getLogger("aiogram.Middleware").setLevel(logging.DEBUG)
+logging.getLogger("aiogram.Middleware").setLevel(logging.INFO)
+logging.getLogger("aiogram").setLevel(logging.INFO)
+
+RUN_POLLING = True

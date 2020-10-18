@@ -22,8 +22,9 @@ async def start_command_handler(message: Message, user: User):
 @dp.message_handler(state=ProcessAuthStates.enter_secret_hash)
 async def enter_secret_hash_handler(message: Message, user: User, state: FSMContext):
     secret_hash = message.text
-    if not user.process_auth(secret_hash):
+    if not (await user.process_auth(secret_hash)):
         await message.answer("Неверный код!")
+        raise SkipHandler
 
     await message.answer(f"Отлично! Приятно познакомиться, {user.slug}")
     await state.finish()

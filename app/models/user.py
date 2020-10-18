@@ -27,8 +27,8 @@ class User(types.User):
     def is_club_user(self) -> bool:
         return self.api_caller.is_club_user(self)
 
-    def process_auth(self, secret_hash: str) -> bool:
-        enriched_user = self.api_caller.process_auth(secret_hash)
+    async def process_auth(self, secret_hash: str) -> bool:
+        enriched_user = await self.api_caller.process_auth(self, secret_hash)
         self.populate_with_club_information(enriched_user)
         return bool(enriched_user)
 
@@ -40,3 +40,7 @@ class User(types.User):
 @dataclass
 class EnrichedUser:
     slug: str
+
+    @classmethod
+    def from_response(cls, response: dict) -> "EnrichedUser":
+        return cls(slug=response["slug"])
